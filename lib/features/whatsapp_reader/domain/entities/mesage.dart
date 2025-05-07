@@ -13,20 +13,19 @@ class Message {
     DateTime? timestamp,
   }) : timestamp = timestamp ?? DateTime.now();
 
-  // Method لإنشاء نسخة محدثة من الكائن
   Message copyWith({
     String? id,
     String? content,
     String? sender,
-    bool? isUnread,
     DateTime? timestamp,
+    bool? isUnread,
   }) {
     return Message(
       id: id ?? this.id,
       content: content ?? this.content,
       sender: sender ?? this.sender,
-      isUnread: isUnread ?? this.isUnread,
       timestamp: timestamp ?? this.timestamp,
+      isUnread: isUnread ?? this.isUnread,
     );
   }
 }

@@ -1,12 +1,15 @@
 import 'package:text_to_voice_app/features/whatsapp_reader/domain/entities/mesage.dart';
+import 'package:text_to_voice_app/features/whatsapp_reader/domain/interfaces/message_repository.dart';
 
 class MarkMessageAsReadUseCase {
-  final MessageRepository repository; // نحتاج الـ Repository هنا
+  final MessageRepository repository;
+
+  MarkMessageAsReadUseCase(this.repository);
 
   Future<void> execute(Message message) async {
     if (message.isUnread) {
-      message = message.copyWith(isUnread: false); // تحديث الحالة
-      await repository.updateMessage(updatedMessage); // حفظ التغيير
+      final updatedMessage = message.copyWith(isUnread: false);
+      await repository.updateMessage(updatedMessage);
     }
   }
 }
